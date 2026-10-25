@@ -1,0 +1,367 @@
+@import "tailwindcss";
+* {
+    font-family: "Vazirmatn", sans-serif;
+}
+body::before {
+    content: "";
+    position: fixed;
+    inset: -25px;
+    z-index: -1;
+    background-image: var(--slide-bg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(22px) brightness(0.4);
+    opacity: 0.8;
+    transform: scale(1.05);
+    pointer-events: none;
+}
+body{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #76828e;
+}
+#App{
+    width: 80%;
+    min-height: 80vh;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    border: 1px solid rgba(245, 245, 245, 0.805);
+    box-shadow: 0px 0px 8px rgba(245, 245, 245, 0.564);
+}
+nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 20;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 5;
+}
+.img-div{
+     width: 130px;
+     height: 60px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+}
+
+.logo-img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.right-menu {
+    margin-right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    font-size: 14px;
+    color: aliceblue;
+    font-family: "Vazirmatn", sans-serif;
+    font-weight: 500;
+}
+
+
+.right-menu span {
+    cursor: pointer;
+    padding-bottom: 6px;
+    border-bottom: 2px solid transparent;
+    position: relative;
+    font-family: "Vazirmatn", sans-serif;
+    font-weight: 500;
+}
+
+.right-menu span::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #c49832;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.right-menu span.active::after {
+    width: 100%;
+    box-shadow:
+        0 0 5px rgb(195, 165, 46),
+        0 0 15px rgb(195, 165, 46),
+        0 0 25px rgb(195, 165, 46);
+    transition-delay: 3000;
+}
+
+.left-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding-left: 15px;
+    font-size: large;
+}
+
+.login-div,
+.subscription-div{
+    gap: 5px;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgb(195, 165, 46);
+    padding: 6px 5px 6px 5px;
+    box-shadow: inset 0 0 8px rgb(195, 165, 46);
+}
+
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: #bbbbbb;
+    font-size: 15px;
+}
+
+.search-box i {
+    position: absolute;
+    left: 12px;
+    color: #bbbbbb;
+}
+
+.input-search {
+    width: 250px;
+    padding: 5px;
+    border-radius: 15px;
+    background-color: transparent;
+    border-radius: 18px;
+    box-shadow: inset 0 0 8px rgb(190, 190, 189);
+    border: 1px solid rgb(190, 190, 189);
+}
+.slider{
+    width: 100%;
+    min-height: 80vh;
+    position: relative;
+    overflow: hidden;
+    
+}
+.slide{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    z-index: 0;
+    transition: opacity 1s ease-in-out;
+    
+}
+
+.slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    object-position: center;
+}
+
+.slide::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.74) 10%,
+        rgba(0, 0, 0, 0.08) 25%,
+        rgba(0, 0, 0, 0.08) 85%,
+        rgba(0, 0, 0, 0.5) 100%
+    ),
+    linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.15) 0%,
+        rgba(0, 0, 0, 0.2) 40%,
+        rgba(0, 0, 0, 0.65) 80%,
+        rgba(0, 0, 0, 0.85) 100%
+    );
+
+    pointer-events: none;
+}
+
+.slide-prev,
+.slide-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border-radius: 50%;
+    box-shadow: inset 0 0 8px rgb(190, 190, 189);
+    border: 1px solid rgb(190, 190, 189);
+    background-color: transparent;
+    color: #fff;
+    font-size: 28px;
+    font-family: Arial, sans-serif;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 10;
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.slide-prev {
+    left: 20px;
+}
+
+
+
+
+.slide-next {
+    right: 20px;
+}
+
+
+
+.slide-prev:hover,
+.slide-next:hover {
+    background: rgba(0, 0, 0, 0.8);
+    border-color: rgba(255, 255, 255, 0.8);
+    transform: translateY(-50%) scale(1.08);
+}
+
+
+.slider-dot {
+    position: absolute;
+    bottom: 28%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    z-index: 10;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.4s ease-in;
+}
+
+.dot.active {
+    width: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.dot:hover {
+    background-color: #fff;
+}
+
+.slide-content {
+    position: absolute;
+    z-index: 2;
+
+    top: 50%;
+    right: 8%;
+    transform: translateY(-50%);
+
+    width: 42%;
+    max-width: 550px;
+
+    direction: rtl;
+    text-align: right;
+    color: white;
+}
+
+.slide-english-title {
+    display: block;
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: #b8c5d6;
+    margin-bottom: 10px;
+}
+
+
+.slide-content h2 {
+    margin: 0 0 15px;
+    font-size: clamp(28px, 3vw, 46px);
+    font-weight: 800;
+}
+
+
+.slide-details {
+    font-size: 14px;
+    color: #e0e0e0;
+    margin-bottom: 18px;
+    line-height: 2;
+}
+
+
+.slide-content p {
+    font-size: 16px;
+    line-height: 2;
+    color: #ddd;
+    max-width: 480px;
+}
+
+@media (max-width: 768px) {
+    .slide-content {
+        right: 6%;
+        width: 75%;
+    }
+
+    .slide-content p {
+        font-size: 13px;
+    }
+
+    .slide-details {
+        font-size: 12px;
+    }
+}
+.movies-box {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    gap: 32px;
+    overflow-x: auto;
+    z-index: 20;
+    background-color: #1f1e2aa8;
+}
+
+.movie-div {
+    flex-shrink: 0;
+    margin-left: 12px;
+    cursor: pointer;
+}
+
+.movie-img {
+    display: block;
+    width: 200px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 12px;
+}

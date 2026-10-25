@@ -1,0 +1,11 @@
+import "./style.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "@fontsource/vazirmatn";
+import "@fontsource/vazirmatn/500.css";
+import "@fontsource/vazirmatn/700.css";
+import { navBar } from "./components/navbar";
+import { slider } from "./components/slider";
+import { moviesCarousel } from "./components/moviescarousel";
+moviesCarousel();
+slider();
+navBar();
